@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 
 @Entity
 @Table(name="TB_FUNC")
-public class Functonality implements Serializable {
+public class Functionality implements Serializable {
 	/**
 	 * 
 	 */
@@ -18,8 +18,9 @@ public class Functonality implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	
 	private long id;
+	
+	
 	private String funcionalidade;
 	private boolean perfil;
 	
