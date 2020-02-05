@@ -22,7 +22,7 @@ public class Functionality implements Serializable {
 	
 	
 	private String funcionalidade;
-	private boolean perfil;
+	private String perfil;
 	
 	public long getId() {
 		return id;
@@ -36,12 +36,13 @@ public class Functionality implements Serializable {
 	public void setFuncionalidade(String funcionalidade) {
 		this.funcionalidade = funcionalidade;
 	}
-	public boolean isPerfil() {
+	public String getPerfil() {
 		return perfil;
 	}
-	public void setPerfil(boolean perfil) {
+	public void setPerfil(String perfil) {
 		this.perfil = perfil;
 	}
+
 	
 	
 }

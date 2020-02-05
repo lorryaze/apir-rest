@@ -24,7 +24,7 @@ public class User implements Serializable{
 	
 	private String email;
 	private String senha;
-	private boolean perfil;
+	private String perfil;
 	
 	public long getId() {
 		return id;
@@ -44,11 +44,12 @@ public class User implements Serializable{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public Boolean getPerfil() {
+	public String getPerfil() {
 		return perfil;
 	}
-	public void setPerfil(boolean perfil) {
+	public void setPerfil(String perfil) {
 		this.perfil = perfil;
 	}
+
 
 }
