@@ -34,9 +34,9 @@ import springfox.documentation.swagger.web.SecurityConfigurationBuilder;
 @Configuration
 @EnableSwagger2WebMvc
 public class SwaggerConfig {
-	private static final String CLIENT_ID = null;
+	private static final String CLIENT_ID = "admin";
 
-	private static final String CLIENT_SECRET = null;
+	private static final String CLIENT_SECRET = "123";
 
 	private static final String AUTH_SERVER = null;
 
@@ -65,7 +65,7 @@ public class SwaggerConfig {
 	}
 	private SecurityScheme securityScheme() {
 	    GrantType grantType = new AuthorizationCodeGrantBuilder()
-	        .tokenEndpoint(new TokenEndpoint(AUTH_SERVER + "/token", "oauthtoken"))
+	        .tokenEndpoint(new TokenEndpoint("8080" + "/token", "oauthtoken"))
 	        .tokenRequestEndpoint(new TokenRequestEndpoint(AUTH_SERVER + "/authorize", CLIENT_ID, CLIENT_SECRET))
 	        .build();
 	 
@@ -86,7 +86,7 @@ public class SwaggerConfig {
 	    return SecurityContext.builder()
 	      .securityReferences(
 	        Arrays.asList(new SecurityReference("spring_oauth", scopes())))
-	      .forPaths(PathSelectors.regex("/foos.*"))
+	      .forPaths(PathSelectors.regex("/api.*"))
 	      .build();
 	}
 	
