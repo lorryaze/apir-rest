@@ -3,6 +3,9 @@ package com.usercontrol.apirest.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +40,9 @@ public class UserController {
 	//Lista apenas um usuário
 	@GetMapping("/usuario/{id}")
 	@ApiOperation("Retorna apenas um usuário")
-	public User listOnlyUser(@PathVariable(value = "id") long id) {
+	public User listOnlyUser(@PathVariable(value = "id") long id,
+							@AuthenticationPrincipal UserDetails userDetails) {
+		System.out.println(userDetails);
 		return user.findById(id);
 	}
 	
@@ -50,12 +55,14 @@ public class UserController {
 	//deleta um usuário do banco de dados
 	@DeleteMapping("/usuario")
 	@ApiOperation("Deleta um usuário")
+	@PreAuthorize("hasRole('ADMIN')")
 	public void deleteUser(@RequestBody User usuario) {
 		user.delete(usuario);
 	}
 	//atualiza os dados de um um usuário
 	@PutMapping("/usuario")
 	@ApiOperation("Atualiza os dados de um usuário")
+	@PreAuthorize("hasRole('ADMIN')")
 	public User putUser(@RequestBody User usuario) {
 		return user.save(usuario);
 	}

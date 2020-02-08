@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.lang.NonNull;
+
 import javax.persistence.GenerationType;
 
 @Entity
@@ -21,11 +25,10 @@ public class User implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	
+	@NotNull
 	private String email;
 	private String senha;
-	private String perfil;
-	
+	private boolean perfil;
 	public long getId() {
 		return id;
 	}
@@ -44,12 +47,14 @@ public class User implements Serializable{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public String getPerfil() {
+	public boolean isPerfil() {
 		return perfil;
 	}
-	public void setPerfil(String perfil) {
+	public void setPerfil(boolean perfil) {
 		this.perfil = perfil;
 	}
+	
+
 
 
 }

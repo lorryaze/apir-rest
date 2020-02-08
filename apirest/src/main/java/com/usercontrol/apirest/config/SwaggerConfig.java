@@ -40,7 +40,7 @@ public class SwaggerConfig {
 
 	private static final String AUTH_SERVER = null;
 
-	//Docker é uma classe externa da aplicação o bean faz o import pro nosso projeto
+	//Docket é uma classe externa da aplicação o bean faz o import pro nosso projeto
 	@Bean
     public Docket userApi() {
          Docket docket = new Docket(DocumentationType.SWAGGER_2)

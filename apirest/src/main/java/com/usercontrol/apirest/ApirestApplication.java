@@ -10,12 +10,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class ApirestApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApirestApplication.class, args);
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		System.out.println(passwordEncoder.encode("123"));
 	}
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
