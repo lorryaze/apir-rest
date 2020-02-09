@@ -25,14 +25,16 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger.web.SecurityConfiguration;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 //import springfox.documentation.swagger2.annotations.EnableSwagger2;
-import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
-import springfox.documentation.swagger.web.SecurityConfigurationBuilder;
+//import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
+//import springfox.documentation.swagger.web.SecurityConfigurationBuilder;
 
 //import static springfox.documentation.builders.PathSelectors.regex;
 
 @Configuration
-@EnableSwagger2WebMvc
+@EnableSwagger2
+//@EnableSwagger2WebMvc
 public class SwaggerConfig {
 	private static final String CLIENT_ID = "admin";
 
@@ -47,14 +49,14 @@ public class SwaggerConfig {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.usercontrol.apirest"))
                 .paths(PathSelectors.ant("/api/*"))
-                .build()
-                .securitySchemes(Arrays.asList(securityScheme()))
-                .securityContexts(Arrays.asList(securityContext()));
+                .build();
+                //.securitySchemes(Arrays.asList(securityScheme()))
+                //.securityContexts(Arrays.asList(securityContext()));
                 //.apiInfo(metaInfo());
          return docket;
     }
 	//start
-	@Bean
+	/*@Bean
 	public SecurityConfiguration security() {
 		return SecurityConfigurationBuilder.builder()
 	        .clientId(CLIENT_ID)
@@ -88,7 +90,7 @@ public class SwaggerConfig {
 	        Arrays.asList(new SecurityReference("spring_oauth", scopes())))
 	      .forPaths(PathSelectors.regex("/api.*"))
 	      .build();
-	}
+	}*/
 	
 	Contact contact = new Contact( "Lorrany Azevedo", "https://github.com/lorryaze", "lorrany90@gmail.com");
 	
