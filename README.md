@@ -23,3 +23,10 @@ Caso não seja faça o download do eclipse ou alguma IDE de sua preferência e c
 3 - A aplicação está rodando na porta 8080 então basta abrir o navegado de sua preferência e digitar:
 
     localhost:8080/swagger-ui.html#/
+
+Para realizar a proteção da api foi utilizado o Spring boot Security.
+
+O deploy da aplicação foi feito no Heroku para caso não queira rodar a aplicação localmente basta acessa:
+        
+        https://apirest-usuarios.herokuapp.com/swagger-ui.html
+        
