@@ -48,7 +48,7 @@ public class SwaggerConfig {
          Docket docket = new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.usercontrol.apirest"))
-                .paths(PathSelectors.ant("/api/*"))
+                .paths(PathSelectors.ant("/"))
                 .build();
                 //.securitySchemes(Arrays.asList(securityScheme()))
                 //.securityContexts(Arrays.asList(securityContext()));
