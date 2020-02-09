@@ -17,8 +17,8 @@ public class ApirestApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApirestApplication.class, args);
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		System.out.println(passwordEncoder.encode("123"));
+		//BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		//System.out.println(passwordEncoder.encode("123"));
 	}
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {

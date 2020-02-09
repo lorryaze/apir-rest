@@ -5,6 +5,7 @@ import javax.validation.OverridesAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -14,6 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 //import com.usercontrol.apirest.models.User;
@@ -28,20 +30,45 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
+		 http.authorizeRequests()
 		.anyRequest().authenticated()
 		.and()
 		//.httpBasic()
 		.formLogin()
 		.and().csrf().disable();
 		
+		/*http.authorizeRequests()
+		.antMatchers("/registration**").permitAll()
+		.anyRequest().authenticated()
+		.and()
+		.formLogin().loginPage("/login").permitAll()
+		.and().logout()
+			.invalidateHttpSession(true)
+			.clearAuthentication(true)
+			.logoutSuccessUrl("/login/?logout").permitAll();
+		//.and().csrf().disable();*/
+		
 	}
 	
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+		
+	}
+	/*
+	@Bean
+	public DaoAuthenticationProvider authProvider() {
+		DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+		auth.setUserDetailsService(customUserDetailsService);
+		auth.setPasswordEncoder(passwordEncoder());
+		return auth;
+	}*/
 	//O noop formata a senha no padrão storage format e evita erros como 401 isso 
 	//serve para releases mais antigas do spring security
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(customUserDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+		//auth.authenticationProvider(authProvider());
 	}
 	
 	/*@Bean
