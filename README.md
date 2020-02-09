@@ -37,6 +37,6 @@ As requisições da api também foram testadas no postman, caso queira testa-lá
 
 O deploy da aplicação foi feito no Heroku para caso não queira rodar a aplicação localmente basta acessa:
         
-        https://apirest-usuarios.herokuapp.com/swagger-ui.html
+https://apirest-usuarios.herokuapp.com/swagger-ui.html
 
 As credenciais de login são: adm@gmail.com, e senha: 123.
