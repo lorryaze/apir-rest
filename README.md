@@ -39,4 +39,4 @@ O deploy da aplicação foi feito no Heroku para caso não queira rodar a aplica
         
         https://apirest-usuarios.herokuapp.com/swagger-ui.html
 
-As credenciais login: adm@gmail.com, e senha: 123.
+As credenciais de login são: adm@gmail.com, e senha: 123.
